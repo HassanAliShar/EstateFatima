@@ -24,7 +24,7 @@ class CreateFranchisePlotsTable extends Migration
             $table->decimal('down_payment', 10, 2);
             $table->decimal('ins_payment', 10, 2);
             $table->string('status')->nullable();
-            $table->string('confirm_staus')->nullable();
+            $table->string('confirm_status')->nullable();
             $table->foreignId('user_id');
 
             $table->foreign('block_id')->references('id')->on('blocks')->cascadeOnDelete()->cascadeOnUpdate();

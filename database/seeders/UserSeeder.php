@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'name'=>'Admin',
                 'email'=>'admin@rufitown.com',
                 'mobile_no'=>'923063883430',
-                'password'=>Hash::make('12345678'),
+                'password'=>Hash::make('12345@aA'),
                 'role_id'=>1,
             ]
         );
