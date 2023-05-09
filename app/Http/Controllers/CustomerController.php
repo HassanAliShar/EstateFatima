@@ -195,7 +195,7 @@ class CustomerController extends Controller
         $update_cus->relation = $request->relation;
 
         if($update_cus->save()){
-            return redirect()->with('success','Customer Info Updated Successfully');
+            return redirect()->back()->with('success','Customer Info Updated Successfully');
         }
         else{
             return redirect()->back()->with('error','Customer Not Updated');
