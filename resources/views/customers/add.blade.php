@@ -83,8 +83,19 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="UserName">Select Agent</label>
+                        <select name="created_by" class="form-control" required="">
+                            <option value="" selected="">Select Agent</option>
+                            @foreach ($franchises ?? [] as $franchise)
+                                <option value="{{ $franchise->id }}">{{ $franchise->name }} | {{ $franchise->franchise->name ?? 'Not Given' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <h5 class="size text-center text-success pt-3"></h5>
-                    <input type="hidden" value="{{ auth()->user()->id }}" name="created_by"/>
+                    {{-- <input type="hidden" value="{{ auth()->user()->id }}" name="created_by"/> --}}
                     <input type="hidden" class="hidden_size" name="plot_size"/>
                     <h4 class="showtotal_price text-center text-success pt-0"></h5>
                     <input type="hidden" class="hidden_price" name="total_price"/>
@@ -110,13 +121,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="MobileNumber">Mobile Number</label>
-                        <input id="MobileNumber" value="{{ old('mobile_no') }}" required class="form-control" type="text" name="mobile_no" >
+                        <input id="MobileNumber" data-inputmask="'mask': '9999-9999999'" value="{{ old('mobile_no') }}" required class="form-control" type="text" name="mobile_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserCnic">CNIC Number</label>
-                        <input id="UserCnic" value="{{ old('cnic_no') }}" required class="form-control" type="text" name="cnic_no" >
+                        <input id="UserCnic" data-inputmask="'mask': '99999-9999999-9'" value="{{ old('cnic_no') }}" required class="form-control" type="text" name="cnic_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -171,9 +182,9 @@
                         <label for="UserAddress">Select Relation</label>
                         <select class="form-control" required name="relation">
                             <option>-- Select Relation</option>
-                            <option>S/O</option>
-                            <option>D/O</option>
-                            <option>W/O</option>
+                            @foreach (relations() as $item)
+                                <option value="{{ $item }}">{{ $item }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -198,13 +209,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="MobileNumber">Nominee Mobile Number</label>
-                        <input id="MobileNumber" value="{{ old('n_mobile_no') }}" class="form-control" type="text" name="n_mobile_no" >
+                        <input id="MobileNumber" data-inputmask="'mask': '9999-9999999'" value="{{ old('n_mobile_no') }}" class="form-control" type="text" name="n_mobile_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserCnic">Nominee CNIC Number</label>
-                        <input id="UserCnic" value="{{ old('n_cnic_no') }}" class="form-control" type="text" name="n_cnic_no" >
+                        <input id="UserCnic" data-inputmask="'mask': '99999-9999999-9'" value="{{ old('n_cnic_no') }}" class="form-control" type="text" name="n_cnic_no" >
                     </div>
                 </div>
                 <div class="col-md-4">

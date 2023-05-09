@@ -53,7 +53,8 @@
         <li><a href="#about" class="page-scroll">About</a></li>
         <li><a href="#services" class="page-scroll">Services</a></li>
         <li><a href="#portfolio" class="page-scroll">Projects</a></li>
-        <li><a href="#testimonials" class="page-scroll">Life Style</a></li>
+        {{-- <li><a href="#testimonials" class="page-scroll">Life Style</a></li> --}}
+        <li><a href="{{ route('user.info') }}" class="page-scroll">Plot Info</a></li>
         {{-- <li><a href="#booking_details" class="page-scroll">Booking Details</a></li> --}}
         <li><a href="#contact" class="page-scroll">Contact</a></li>
         @guest

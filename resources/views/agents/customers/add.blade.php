@@ -108,13 +108,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="MobileNumber">Mobile Number</label>
-                        <input id="MobileNumber" value="{{old('mobile_no')}}" class="form-control" required type="text" name="mobile_no" >
+                        <input id="MobileNumber" data-inputmask="'mask': '9999-9999999'" value="{{old('mobile_no')}}" class="form-control" required type="text" name="mobile_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserCnic">CNIC Number</label>
-                        <input id="UserCnic" value="{{ old('cnic_no') }}" class="form-control" required type="text" name="cnic_no" >
+                        <input id="UserCnic" data-inputmask="'mask': '99999-9999999-9'" value="{{ old('cnic_no') }}" class="form-control" required type="text" name="cnic_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -196,13 +196,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="MobileNumber">Nominee Mobile Number</label>
-                        <input id="MobileNumber" value="{{ old('n_mobile_no') }}" class="form-control" type="text" name="n_mobile_no" >
+                        <input id="MobileNumber" data-inputmask="'mask': '9999-9999999'" value="{{ old('n_mobile_no') }}" class="form-control" type="text" name="n_mobile_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserCnic">Nominee CNIC Number</label>
-                        <input id="UserCnic" value="{{ old('n_cnic_no') }}" class="form-control" type="text" name="n_cnic_no" >
+                        <input id="UserCnic" data-inputmask="'mask': '99999-9999999-9'" value="{{ old('n_cnic_no') }}" class="form-control" type="text" name="n_cnic_no" >
                     </div>
                 </div>
                 <div class="col-md-4">
