@@ -30,8 +30,8 @@ class AcustomerController extends Controller
     }
 
     function checkUser(){
-        
-        
+
+
         // dd($franchise);
     }
 
@@ -39,22 +39,22 @@ class AcustomerController extends Controller
         try{
 
             $request->validate([
-                
-                'name'=>'required|string|max:50',
+
+                'name'=>'required|string',
                 'email' => 'nullable',
-                'mobile_no' => 'required|max:12|min:10',
-                'cnic_no' => 'nullable|numeric|min:12|max:14',
-                'phone' => 'nullable|numeric|min:10|max:12',
+                'mobile_no' => 'required',
+                'cnic_no' => 'nullable',
+                'phone' => 'nullable',
                 'address' => 'required',
                 'gender' => 'required',
                 'p_address' => 'nullable',
                 'passport' => 'nullable',
-                'gardion' => 'nullable|string',
+                'gardion' => 'nullable',
                 'relation' => 'nullable',
                 'n_email' => 'nullable',
                 'preferred_choices'=>'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'n_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'required|image',
+                'n_image' => 'required|image',
             ]);
             DB::beginTransaction();
             $customer = new Customer();
@@ -72,7 +72,7 @@ class AcustomerController extends Controller
                 // Upload Orginal Image
                 $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
-    
+
                 $insert['image'] = "$profileImage";
                 // Save In Database
                 $$customer->image="$profileImage";
@@ -84,7 +84,7 @@ class AcustomerController extends Controller
             $customer->created_by = $request->created_by;
             $customer->save();
             // $customer = Customer::orderby('id','desc')->first();
-    
+
             $nominee = new Nominee();
             $nominee->name = $request->n_name;
             $nominee->email = $request->n_email;
@@ -100,7 +100,7 @@ class AcustomerController extends Controller
                 // Upload Orginal Image
                 $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
-    
+
                 $insert['image'] = "$profileImage";
                 // Save In Database
                 $$customer->image="$profileImage";
@@ -109,9 +109,9 @@ class AcustomerController extends Controller
             $nominee->guardian = $request->n_gardion;
             $nominee->relation = $request->n_relation;
             $nominee->customer_id = $customer->id;
-    
+
             $nominee->save();
-    
+
             $order = new Booking_order();
             $total_price = $request->total_price - ($request->installment + $request->d_payment);
             $order->total_amount = $total_price;
@@ -119,7 +119,7 @@ class AcustomerController extends Controller
             $order->customer_id = $customer->id;
             $order->status = 0;
             $order->save();
-    
+
             // $booking_order = Booking_order::orderby('id','desc')->first();
             $booking = new Booking();
             $booking->booking_orders_id = $order->id;
@@ -130,19 +130,19 @@ class AcustomerController extends Controller
             $booking->down_payment = $request->d_payment;
             $booking->pre_choice = $request->preferred_choices;
             $booking->save();
-    
+
             // $last_booking = Booking::orderby('id','desc')->first();
             $installment = new Booking_installment();
             $installment->booking_order_id = $order->id;
             $installment->booking_id = $booking->id;
             $installment->customer_id = $customer->id;
             $installment->installment_amount = $request->installment;
-    
+
             if($installment->save()){
                 $franchise = Franchise::where('user_id',auth()->user()->id)->first();
                 $franchise->total_amount += $request->installment+$request->d_payment;
                 $franchise->save();
-    
+
                 $plot_status = Plot::find($request->plot);
                 $plot_status->status = 1;
                 $plot_status->save();
