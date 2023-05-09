@@ -6,6 +6,13 @@
         font-size: 30px;
         font-family: 900;
     }
+    @media print {
+        img.print {
+            display: block !important;
+            page-break-inside: avoid !important;
+            max-height: 150px;
+        }
+    }
 </style>
 <div class="subheader">
     <h1 class="subheader-title">
@@ -22,16 +29,13 @@
                 <div class="d-flex align-items-center mb-5">
                     <h1 class="keep-print-font fw-500 mb-0 text-primary flex-1 position-relative">
                         APPLICATION FORM
-                        <img  class="position-absolute pos-top pos-right mt-1 hidden-md-down keep-print-font" height="150" width="100" src="{{ asset('public/customer_images') }}/{{ $customer_info->images ?? 'no_image.png' }}">
                     </h1>
                 </div>
-                <h3 class="color-primary-600 keep-print-font pt-4 m-0">
-                   Personal Information.
-                </h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-10 col-xl-8 d-flex">
+            <div class="col-sm-8 col-md-8 col-xl-8">
+                <h3 class="color-primary-600 keep-print-font m-0">Personal Information.</h3>
                 <div class="table-responsive">
                     <table class="table table-clean table-sm w-auto align-self-end">
                         <tbody>
@@ -48,7 +52,7 @@
                             <tr>
                                 <th class="fw-900">
                                     S/O:
-                                </th> 
+                                </th>
                                 <th>
                                     {{ $customer_info->guardian ?? 'Not Given' }}
                                 </th>
@@ -89,10 +93,15 @@
                     </table>
                 </div>
             </div>
+            <div class="col-sm-4 col-md-4 col-xl-4 d-flex">
+                <span class="keep-front-print ml-auto">
+                    <img  class="" height="150" width="100" src="{{ asset('public/customer_images') }}/{{ $customer_info->images ?? 'no_image.png' }}">
+                </span>
+            </div>
             <div class="col-md-12 col-xl-12 col-sm-12">
                 <hr class="table-scale-border-bottom fw-700">
             </div>
-            <div class="col-sm-12 col-md-10 col-xl-8">
+            <div class="col-sm-8 col-md-8 col-xl-8">
                 <h3 class="color-primary-600 keep-print-font pt-4 m-0">
                     Next Of KIN (NOK) Information.
                  </h3>
@@ -135,13 +144,15 @@
                     </table>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-2 col-xl-4">
-                <img  class="position-absolute pos-top pos-right mt-1 hidden-md-down keep-print-font" height="150" width="100" src="{{ asset('public/customer_images') }}/{{ $customer_info->nominee->images ?? 'no_image.png' }}">
+            <div class="col-sm-4 col-md-4 col-xl-4 d-flex">
+                <span class="keep-front-print ml-auto">
+                    <img height="150" width="100" src="{{ asset('public/customer_images') }}/{{ $customer_info->nominee->images ?? 'no_image.png' }}">
+                </span>
             </div>
             <div class="col-md-12 col-xl-12 col-sm-12">
                 <hr class="table-scale-border-bottom fw-700">
             </div>
-            <div class="col-sm-12 col-md-10 col-xl-8">
+            <div class="col-sm-8 col-md-8 col-xl-8">
                 <h3 class="color-primary-600 keep-print-font pt-4 m-0">
                     Applicant Booking Information.
                  </h3>
@@ -218,7 +229,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -269,7 +280,7 @@
             </div>
         </div>
         <div style="height: 400px;">
-            
+
         </div>
         <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
