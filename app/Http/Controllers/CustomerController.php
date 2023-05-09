@@ -46,8 +46,8 @@ class CustomerController extends Controller
                 'relation' => 'nullable',
                 'n_email' => 'nullable',
                 'preferred_choices'=>'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'n_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'required|image',
+                'n_image' => 'required|image',
             ]);
             DB::beginTransaction();
             $customer = new Customer();
@@ -65,7 +65,7 @@ class CustomerController extends Controller
                 // Upload Orginal Image
                 $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
-    
+
                 $insert['image'] = "$profileImage";
                 // Save In Database
                 $customer->images="$profileImage";
@@ -77,7 +77,7 @@ class CustomerController extends Controller
             $customer->created_by = !is_null($request->created_by) ? $request->created_by : auth()->user()->id;
             $customer->save();
             // $customer = Customer::orderby('id','desc')->first();
-    
+
             $nominee = new Nominee();
             $nominee->name = $request->n_name;
             $nominee->email = $request->n_email;
@@ -93,7 +93,7 @@ class CustomerController extends Controller
                 // Upload Orginal Image
                 $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
-    
+
                 $insert['image'] = "$profileImage";
                 // Save In Database
                 $nominee->images="$profileImage";
