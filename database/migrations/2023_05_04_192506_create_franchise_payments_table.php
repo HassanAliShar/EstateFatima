@@ -18,8 +18,8 @@ class CreateFranchisePaymentsTable extends Migration
             $table->id();
             $table->foreignId('franchise_id');
             $table->decimal('total_amount',10, 2);
-            $table->decimal('paid_amount', 10, 2);
-            $table->decimal('commission', 10, 2);
+            $table->decimal('paid_amount', 20, 2);
+            $table->decimal('commission', 20, 2);
             $table->foreign('franchise_id')->references('id')->on('franchises')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

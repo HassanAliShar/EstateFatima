@@ -17,7 +17,7 @@ class CreateFranchiseExpencesTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('name')->nullable();
-            $table->decimal('amount', 10, 2);
+            $table->decimal('amount', 20, 2);
             $table->string('details')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('franchise_id');

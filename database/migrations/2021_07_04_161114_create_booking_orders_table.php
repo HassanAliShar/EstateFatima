@@ -16,7 +16,7 @@ class CreateBookingOrdersTable extends Migration
         Schema::create('booking_orders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->decimal('total_amount', 10, 2);
+            $table->decimal('total_amount', 20, 2);
             $table->foreignId('created_by');
             $table->foreignId('customer_id');
             $table->string('status')->nullable();
