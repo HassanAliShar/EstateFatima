@@ -36,7 +36,7 @@
                                 <div class="form-row">
                                     @csrf
                                     <div class="col-md-2 offset-md-5 shadow mt-2 mb-4 text-center">
-                                        <img src="{{ asset('customer_images/'.$customer_info->images) }}" style="height: 100px; width: 100px; border-radius: 50%;"/>
+                                        <img src="{{ asset('/public/customer_images/'.$customer_info->images) }}" style="height: 100px; width: 100px; border-radius: 50%;"/>
                                         <h4 class="pt-3"></h4>
                                     </div>
                                 </div>
