@@ -42,7 +42,7 @@
     
                             <div class="row mb-3">
                                 <label for="password" class="col-form-label text-md-end">Enter Customer Mobile No <span class="text-danger">*</span></label>
-                                <input id="password" type="text" placeholder="Enter Customer Mobile No" class="form-control @error('password') is-invalid @enderror" name="mobile_no" value="{{ old('mobile_no') }}" required>
+                                <input id="password" data-inputmask="'mask': '9999-9999999'" type="text" placeholder="Enter Customer Mobile No" class="form-control @error('password') is-invalid @enderror" name="mobile_no" value="{{ old('mobile_no') }}" required>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
