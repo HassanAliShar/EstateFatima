@@ -17,7 +17,7 @@
                          {{ Session::get('success') }}
                       </div>
                     @endif
-        
+
                     @if (Session::has('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ Session::get('error') }}
@@ -55,7 +55,7 @@
                         <label for="plotname">Plot Name</label>
                         <input id="plotname" value="{{ old('name') }}" onchange="plotNumber(this)" class="form-control" type="text" name="name">
                         <p class="form-text text-danger plot_name_error">
-                            
+
                         </p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                                 @foreach ($block_cat as $row)
                                     @if(old('type') == $row->id)
                                         <option selected value="{{ $row->id }}">{{ $row->name }}</option>
-                                    @else                                    
+                                    @else
                                         <option value="{{ $row->id }}">{{ $row->name }}</option>
                                     @endif
                                 @endforeach
@@ -135,13 +135,13 @@
     function getBlockNumbers(startblock,endblock){
         start = startblock;
         end = endblock;
+        $('#plotname').val('')
     }
 
     $(document).ready(function(){
         start = $('#blocks').options[this.selectedIndex].getAttribute('data-start')
         end = $('#blocks').options[this.selectedIndex].getAttribute('data-end')
     })
-
     function plotNumber(ele){
         if(ele.value == ''){
             $("#savePlotbtn").attr('disabled','');
@@ -155,6 +155,25 @@
         else{
             $('.plot_name_error').text('');
             $("#savePlotbtn").removeAttr('disabled');
+        }
+        var block_id = $('#blocks').val();
+        if(block_id != '' && plot != null){
+            $.ajax({
+                type: "get",
+                url: "/plot/get-with-block/"+block_id+"/Plot "+plot,
+                dataType: "json",
+                success: function (response) {
+                    if(response != null){
+                        $('.plot_name_error').text(response.name+" is already Added Please add other name");
+                        ele.focus();
+                        $("#savePlotbtn").attr('disabled','');
+                    }
+                    else{
+                        $('.plot_name_error').text('');
+                        $("#savePlotbtn").removeAttr('disabled');
+                    }
+                }
+            });
         }
     }
 </script>
