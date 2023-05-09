@@ -91,7 +91,7 @@ class CustomerController extends Controller
                 // Define upload path
                 $destinationPath = public_path('/customer_images/'); // upload path
                 // Upload Orginal Image
-                $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+                $profileImage = 'nom-'.date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
 
                 $insert['image'] = "$profileImage";
