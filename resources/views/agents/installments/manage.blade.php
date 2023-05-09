@@ -102,7 +102,7 @@
                                         <th>
                                             <a href="/agent/get_unique_invoice/{{ $irow->id }}/{{ $installment->id }}" class="btn btn-info btn-sm">View</a>
                                             @if(is_null($installment->deleted_at))
-                                                <a href="/agent/installment/delete/{{ $irow->id }}/{{ $installment->id }}" class="btn btn-sm btn-danger">Delete</a>
+                                                {{-- <a href="/agent/installment/delete/{{ $irow->id }}/{{ $installment->id }}" class="btn btn-sm btn-danger">Delete</a> --}}
                                                 <a href="{{ route('agent.edit_customer_installment',$irow->id) }}" class="btn btn-sm btn-primary ml-2">Edit</a>
                                             @endif
                                         </td>
