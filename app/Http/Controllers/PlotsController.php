@@ -153,4 +153,9 @@ class PlotsController extends Controller
             return redirect()->back()->with('error','Plot Not Rejected');
         }
     }
+
+    public function get_plot_with_block($block_id,$id){
+        $plot = Plot::where('block_id',$block_id)->where('name',$id)->first();
+        return $plot;
+    }
 }

@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/plot/delete/{id}',[PlotsController::class , 'delete'])->name('plots.delete');
     Route::post('/plot/update',[PlotsController::class , 'update'])->name('plots.update');
     Route::get('/plot/get-franchises-plots',[PlotsController::class , 'get_franchises_plots'])->name('plots.get.franchises.plots');
+    Route::get('/plot/get-with-block/{block_id}/{id}',[PlotsController::class , 'get_plot_with_block'])->name('get.plot.with.block');
 
     Route::post('/plot/franchises/accept/{id}',[PlotsController::class , 'accept_plot'])->name('plots.franchises.accept');
     Route::get('/plot/franchises/reject/{id}',[PlotsController::class , 'reject_plot'])->name('plots.franchises.reject');
