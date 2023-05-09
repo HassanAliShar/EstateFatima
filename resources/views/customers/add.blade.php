@@ -157,7 +157,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserAddress">Select Image</label>
-                        <input id="UserAddress" class="form-control" type="file" name="image" >
+                        <input id="UserAddress" accept=".png, .jpg, .jpeg, .gif, .jfif" class="form-control" type="file" name="image" >
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -245,7 +245,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="UserAddress">Nominee Image</label>
-                        <input id="UserAddress" class="form-control" type="file" name="n_image" >
+                        <input id="UserAddress" accept=".png, .jpg, .jpeg, .gif, .jfif" class="form-control" type="file" name="n_image" >
                     </div>
                 </div>
                 <div class="col-md-4">
