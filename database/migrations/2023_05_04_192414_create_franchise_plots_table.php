@@ -20,9 +20,9 @@ class CreateFranchisePlotsTable extends Migration
             $table->foreignId('block_id');
             $table->foreignId('block_type_id');
             $table->string('size');
-            $table->decimal('total_price', 10, 2);
-            $table->decimal('down_payment', 10, 2);
-            $table->decimal('ins_payment', 10, 2);
+            $table->decimal('total_price', 20, 2);
+            $table->decimal('down_payment', 20, 2);
+            $table->decimal('ins_payment', 20, 2);
             $table->string('status')->nullable();
             $table->string('confirm_status')->nullable();
             $table->foreignId('user_id');

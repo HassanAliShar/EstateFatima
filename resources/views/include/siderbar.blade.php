@@ -83,7 +83,7 @@
                         <li class="{{ Request::routeIs('installment.remaining') ? 'active' : '' }}">
                             <a href="{{ route('installment.remaining') }}" title="Privacy" data-filter-tags="application intel privacy">
                                 <i class="fal fa-user-times "></i>
-                                <span class="nav-link-text" data-i18n="nav.application_intel_privacy">Cancelled Files</span>
+                                <span class="nav-link-text" data-i18n="nav.application_intel_privacy">Remaining Installments</span>
                             </a>
                         </li>
                         <li class="{{ Request::routeIs('admin.manage.cancelled.customers') ? 'active' : '' }}">

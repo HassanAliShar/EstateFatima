@@ -20,9 +20,9 @@ class CreatePlotsTable extends Migration
             $table->foreignId('block_id');
             $table->foreignId('block_type_id');
             $table->string('size');
-            $table->decimal('total_price', 10, 2);
-            $table->decimal('down_payment', 10, 2);
-            $table->decimal('ins_payment', 10, 2);
+            $table->decimal('total_price', 20, 2);
+            $table->decimal('down_payment', 20, 2);
+            $table->decimal('ins_payment', 20, 2);
             $table->string('status')->nullable();
 
             $table->foreign('block_id')->references('id')->on('blocks')->cascadeOnDelete()->cascadeOnUpdate();
