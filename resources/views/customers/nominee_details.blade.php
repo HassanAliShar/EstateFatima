@@ -61,7 +61,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label for="MobileNumber">Mobile Number</label>
-                                            <input id="MobileNumber" value="{{ $customer_info->mobile_no }}" class="form-control" type="text" name="mobile_no" >
+                                            <input id="MobileNumber" data-inputmask="'mask': '9999-9999999'" value="{{ $customer_info->mobile_no }}" class="form-control" type="text" name="mobile_no" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
