@@ -33,11 +33,11 @@ class CustomerController extends Controller
     public function store(Request $request){
         try{
             $request->validate([
-                'name'=>'required|string|max:50',
+                'name'=>'required|string',
                 'email' => 'nullable',
-                'mobile_no' => 'required|max:12|min:11',
-                'cnic_no' => 'nullable|max:14|min:12',
-                'phone' => 'nullable|max:12|min:10',
+                'mobile_no' => 'required',
+                'cnic_no' => 'nullable',
+                'phone' => 'nullable',
                 'address' => 'required',
                 'gender' => 'required',
                 'p_address' => 'nullable',
@@ -145,6 +145,7 @@ class CustomerController extends Controller
         }
         catch(Exception $ex){
             DB::rollBack();
+            return $ex;
             return redirect()->back()->with('error',"Data Not Added");
 
         }

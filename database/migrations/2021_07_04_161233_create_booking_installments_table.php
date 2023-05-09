@@ -19,7 +19,7 @@ class CreateBookingInstallmentsTable extends Migration
             $table->foreignId('booking_order_id');
             $table->foreignId('booking_id');
             $table->foreignId('customer_id');
-            $table->decimal('installment_amount', 10, 2);
+            $table->decimal('installment_amount', 20, 2);
             $table->text('installment_details')->nullable();
 
             $table->foreign('booking_order_id')->references('id')->on('booking_orders')->cascadeOnDelete()->cascadeOnUpdate();

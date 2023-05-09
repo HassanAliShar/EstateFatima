@@ -20,9 +20,9 @@ class CreateBookingsTable extends Migration
             $table->foreignId('customer_id');
             $table->foreignId('plot_id');
             $table->foreignId('created_by');
-            $table->decimal('total_amount', 10, 2);
+            $table->decimal('total_amount', 20, 2);
             $table->string("pre_choice")->nullable();
-            $table->decimal('down_payment', 10, 2);
+            $table->decimal('down_payment', 20, 2);
 
             $table->foreign('booking_orders_id')->references('id')->on('booking_orders')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete()->cascadeOnUpdate();

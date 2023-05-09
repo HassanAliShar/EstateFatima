@@ -23,8 +23,8 @@ class CreateFranchisesTable extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('phone')->nullable();
-            $table->decimal('limit_amount', 10, 2);
-            $table->decimal('total_amount', 10, 2);
+            $table->decimal('limit_amount', 20, 2);
+            $table->decimal('total_amount', 20, 2);
             $table->string('status')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
