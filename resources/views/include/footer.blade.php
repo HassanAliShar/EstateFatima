@@ -11,18 +11,5 @@
         </ul>
     </div>
 </footer>
-
-<script>
-    function printSection(el){
-        var getFullContent = document.body.innerHTML;
-        var printsection = document.getElementById(el).innerHTML;
-        document.body.innerHTML = printsection;
-        window.print();
-        document.body.innerHTML = getFullContent;
-        setTimeout(function() {
-                // location.reload();
-        }, 1000);
-    }
-</script>
 @include('include.page_script')
 @include('include.footer_js')

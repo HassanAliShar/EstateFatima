@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Models\Franchise;
 use App\Models\Nominee;
 use App\Models\Plot;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,8 @@ class CustomerController extends Controller
     public function add(){
         $blocks = Block::all();
         $block_cat = Block_category::all();
-        return view('customers.add',compact('blocks','block_cat'));
+        $franchises = User::with('franchise')->where('role_id',2)->where('status',0)->get();
+        return view('customers.add',compact('blocks','block_cat','franchises'));
     }
 
     public function store(Request $request){
@@ -72,7 +74,7 @@ class CustomerController extends Controller
             $customer->guardian = $request->gardion;
             $customer->relation = $request->relation;
             $customer->status = 0;
-            $customer->created_by = $request->created_by;
+            $customer->created_by = !is_null($request->created_by) ? $request->created_by : auth()->user()->id;
             $customer->save();
             // $customer = Customer::orderby('id','desc')->first();
     
@@ -104,7 +106,7 @@ class CustomerController extends Controller
             $order = new Booking_order();
             $total_price = $request->total_price - ($request->installment + $request->d_payment);
             $order->total_amount = $total_price;
-            $order->created_by = $request->created_by;
+            $order->created_by = !is_null($request->created_by) ? $request->created_by : auth()->user()->id;
             $order->customer_id = $customer->id;
             $order->status = 0;
             $order->save();
@@ -113,7 +115,7 @@ class CustomerController extends Controller
             $booking->booking_orders_id = $order->id;
             $booking->customer_id = $customer->id;
             $booking->plot_id = $request->plot;
-            $booking->created_by = $request->created_by;
+            $booking->created_by = !is_null($request->created_by) ? $request->created_by : auth()->user()->id;
             $booking->total_amount = $request->total_price;
             $booking->down_payment = $request->d_payment;
             $booking->pre_choice = $request->preferred_choices;

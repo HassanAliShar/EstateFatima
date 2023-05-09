@@ -3,9 +3,11 @@
 <script src="{{ asset('admin/dist/js/bootstrap.js') }}"></script>
 <script src="{{ asset('webtemp/js/notifications/toastr/toastr.js') }}"></script>
 <script src="{{ asset('webtemp/js/datagrid/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ asset('webtemp/inputmask/inputmask.bundle.js') }}"></script>
 <script>
     $(document).ready(function()
     {
+        $(":input").inputmask();
         // initialize datatable
         $('#dt-basic-example').dataTable(
         {
@@ -126,5 +128,16 @@
             },
         });
     });
+
+    function printSection(el){
+        var getFullContent = document.body.innerHTML;
+        var printsection = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printsection;
+        window.print();
+        document.body.innerHTML = getFullContent;
+        setTimeout(function() {
+                // location.reload();
+        }, 1000);
+    }
 
 </script>

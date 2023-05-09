@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomersDataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FranchiseController;
@@ -189,6 +190,10 @@ Route::group(['middleware' => 'auth'], function () {
         return "Cache is cleared";
     });
 });
+Route::get('/user/info',[CustomersDataController::class,'index'])->name('user.info');
+Route::post('/search/user/info',[CustomersDataController::class,'search_user_info'])->name('search.user.info');
+Route::get('user/file/info/{id}',[CustomersDataController::class,'get_user_file'])->name('get.user.file');
+Route::get('user/file/installment/info/{ins_id}/{id}',[CustomersDataController::class,'get_unique_invoice'])->name('get.user.file.installment');
 
 Auth::routes();
 
