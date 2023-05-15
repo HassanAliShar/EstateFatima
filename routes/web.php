@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomerDocumentController;
 use App\Http\Controllers\CustomersDataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpanseController;
@@ -115,6 +116,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/installment/remaining/installment', [InstallmentController::class, 'remaining_installment_users'])->name('installment.remaining')->middleware('admin');
     Route::get('/edit_customer_installment/{id}',[AinstallmentController::class, 'edit_installment'])->name('admin.edit_customer_installment')->middleware('admin');
     Route::post('/update_customer_installment',[AinstallmentController::class, 'update_customer_installment'])->name('admin.update_customer.installment')->middleware('admin');
+
+
+    Route::get('/customer/document/show/{id}',[CustomerDocumentController::class, 'index'])->name('customer.document.manage');
+    Route::get('/customer/document/add/{id}',[CustomerDocumentController::class, 'add'])->name('customer.document.add');
+    Route::get('/customer/document/view/{id}',[CustomerDocumentController::class, 'view'])->name('customer.document.view');
+    Route::get('/customer/document/edit/{id}',[CustomerDocumentController::class, 'edit'])->name('customer.document.edit');
+    Route::get('/customer/document/delete/{id}',[CustomerDocumentController::class, 'delete'])->name('customer.document.delete');
+    Route::post('/customer/document/store/{id}',[CustomerDocumentController::class, 'store'])->name('customer.document.store');
+    Route::post('/customer/document/update/{id}',[CustomerDocumentController::class, 'update'])->name('customer.document.update');
 
     // Routes for Expanses
     Route::get('/expanse',[ExpanseController::class,'index'])->name('expase.manage');

@@ -22,6 +22,8 @@ return array(
     'App\\Http\\Controllers\\ContactController' => $baseDir . '/app/Http/Controllers/ContactController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CustomerController' => $baseDir . '/app/Http/Controllers/CustomerController.php',
+    'App\\Http\\Controllers\\CustomerDocumentController' => $baseDir . '/app/Http/Controllers/CustomerDocumentController.php',
+    'App\\Http\\Controllers\\CustomersDataController' => $baseDir . '/app/Http/Controllers/CustomersDataController.php',
     'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
     'App\\Http\\Controllers\\ExpanseController' => $baseDir . '/app/Http/Controllers/ExpanseController.php',
     'App\\Http\\Controllers\\FranchiseController' => $baseDir . '/app/Http/Controllers/FranchiseController.php',
