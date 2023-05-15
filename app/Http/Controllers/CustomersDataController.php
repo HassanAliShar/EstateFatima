@@ -21,7 +21,7 @@ class CustomersDataController extends Controller
             // dd($customer);
             if(!is_null($customer)){
                 if($request->mobile_no == $customer->mobile_no){
-                    return redirect('/user/file/info/'.$customer->id);
+                    return redirect('/user/file/info/'.base64_encode($customer->id));
                 }
                 else{
                     return redirect()->back()->with('error',"Invalid Mobile No");
@@ -37,7 +37,7 @@ class CustomersDataController extends Controller
     }
 
     public function get_user_file($customer_id){
-        $customer = Customer::with('booking.plot.block')->find($customer_id);
+        $customer = Customer::with('booking.plot.block')->find(base64_decode($customer_id));
         if(!is_null($customer)){
             return view('users.details',compact('customer'));
         }
