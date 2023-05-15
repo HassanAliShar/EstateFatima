@@ -527,6 +527,8 @@ class ComposerStaticInitc8c5084a04276b1ddbd9e3a4c3c63c00
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerController.php',
+        'App\\Http\\Controllers\\CustomerDocumentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerDocumentController.php',
+        'App\\Http\\Controllers\\CustomersDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomersDataController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\ExpanseController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExpanseController.php',
         'App\\Http\\Controllers\\FranchiseController' => __DIR__ . '/../..' . '/app/Http/Controllers/FranchiseController.php',
