@@ -51,7 +51,8 @@
                                         <a href="{{ route('admin.view.customer.delete',$row->id) }}" class="btn btn-sm btn-danger">Cancel File</a>
                                         <a href="{{ route('admin.nominee_details_show',$row->id) }}" class="btn btn-sm btn-primary ml-2">Edit Nominee</a>
                                         <a href="{{ route('admin.view.customer.form',$row->id) }}" class="btn btn-sm btn-primary ml-2">View Form</a>
-                                    
+                                        <a href="{{ route('customer.document.manage',$row->id) }}" class="btn btn-sm btn-primary ml-2">Documents</a>
+
                                     </td>
                                 </tr>
                                 @endforeach
