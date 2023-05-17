@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-xl-6">
                 <h3>{{ $document->name ?? "Not Given" }}</h3>
-                <img src="{{ asset('customer_documents') }}/{{ $document->images ?? 'no_image.png' }}" style="width: 100%;" alt="">
+                <img src="{{ asset('public/customer_documents') }}/{{ $document->images ?? 'no_image.png' }}" style="width: 100%;" alt="">
             </div>
         </div>
     </div>
