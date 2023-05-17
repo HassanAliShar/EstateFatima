@@ -44,7 +44,7 @@
                             <label for="docimage">Select Image</label>
                             <input id="docimage" accept=".png, .jpg, .jpeg, .gif, .jfif" class="form-control" type="file" name="image" >
                         </div>
-                        <img src="{{ asset('customer_documents') }}/{{ $document->images ?? 'no_image.png' }}" style="width: 200px; height:200px" alt="">
+                        <img src="{{ asset('public/customer_documents') }}/{{ $document->images ?? 'no_image.png' }}" style="width: 200px; height:200px" alt="">
                     </div>
                 </div>
                 <div class="form-row">

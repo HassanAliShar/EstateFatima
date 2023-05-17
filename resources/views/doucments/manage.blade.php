@@ -52,7 +52,7 @@
                                     <td>{{ $row->id ?? "Not Given" }}</td>
                                     <td>{{ $row->name ?? 'Not Given' }}</td>
                                     <td>
-                                        <img src="{{ asset('customer_documents') }}/{{ $row->images ?? 'no_image.png' }}" style="width: 40px; height:40px" alt="">
+                                        <img src="{{ asset('public/customer_documents') }}/{{ $row->images ?? 'no_image.png' }}" style="width: 40px; height:40px" alt="">
                                     </td>
                                     <th>
                                         <a href="{{ route('customer.document.view',$row->id) }}" class="btn btn-sm btn-success">View</a>
