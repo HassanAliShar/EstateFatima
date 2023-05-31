@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/franchise/payments/delete/{id}', [FranchisePaymentController::class, 'delete'])->name('franchise.payments.delete')->middleware('admin');
     Route::get('/franchise/payments/edit/{id}', [FranchisePaymentController::class, 'edit'])->name('franchise.payments.edit')->middleware('admin');
     Route::post('/franchise/payments/update', [FranchisePaymentController::class, 'update'])->name('franchise.payments.update')->middleware('admin');
+    Route::get('/franchise/payments/history/{id}/{franchise_id}/{date}', [FranchisePaymentController::class, 'history'])->name('franchise.payments.history')->middleware('admin');
 
     // Routes for installments
     Route::get('/add/installment', [InstallmentController::class, 'create'])->name('installment.payment')->middleware('admin');

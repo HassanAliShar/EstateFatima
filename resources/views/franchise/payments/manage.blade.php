@@ -54,6 +54,7 @@
                                     <th>
                                         <a href="{{ route('franchise.payments.delete',$row->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                         <a href="{{ route('franchise.payments.edit',$row->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="{{ route('franchise.payments.history',[$row->franchise->user->id,$row->franchise->id,$row->created_at]) }}" class="btn btn-sm btn-primary">History</a>
                                     </td>
                                 </tr>
                                 @endforeach
