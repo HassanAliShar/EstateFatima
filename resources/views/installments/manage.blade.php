@@ -101,7 +101,7 @@
                                         <td>{{ $irow->created_at }}</td>
                                         <th>
                                             <a href="/get_unique_invoice/{{ $irow->id }}/{{ $installment->id }}" class="btn btn-info btn-sm">View</a>
-                                            @if(is_null($installment->deleted_at))    
+                                            @if(is_null($installment->deleted_at))
                                                 <a href="/installment/delete/{{ $irow->id }}/{{ $installment->id }}" class="btn btn-sm btn-danger">Delete</a>
                                                 <a href="{{ route('admin.edit_customer_installment',$irow->id) }}" class="btn btn-sm btn-primary ml-2">Edit</a>
                                             @endif

@@ -80,7 +80,7 @@
                     @csrf
                 </form>
             </li>
-              
+
           @endguest
         {{-- @if (session('email') != "")
             <li><a href="{{ route('logout') }}">Logout &nbsp;<i class="fa fa-sign-in pl-2"></i></a></li>
@@ -629,7 +629,7 @@
 <!-- Footer Section -->
 <div id="footer">
   <div class="container text-center">
-    <p>&copy; {{ date('Y') }} Prince. Design & Develop by <a href="https://techexito.com/" rel="nofollow">TechExito</a></p>
+    <p>&copy; {{ date('Y') }} Prince. Design & Develop by <a href="https://www.linkedin.com/in/hassan-ali-a73a07115" rel="nofollow">Hassan Ali</a></p>
   </div>
 </div>
 <script type="text/javascript" src="{{ asset('Template/js/jquery.1.11.1.js') }}"></script>
