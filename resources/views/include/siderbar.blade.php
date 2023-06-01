@@ -216,6 +216,28 @@
                         <span class="nav-link-text" data-i18n="nav.ui_components">Pay Installment</span>
                     </a>
                 </li>
+
+                <li class="{{ Request::routeIs('agent.subagent.add') ||  Request::routeIs('agent.subagent.manage') ? 'active' : '' }}">
+                    <a href="#" title="Branch Customers" data-filter-tags="customers">
+                        <i class="fal fa-user"></i>
+                        <span class="nav-link-text px-2" data-nav="nav.customers">My Agents</span>
+                    </a>
+                    <ul>
+                        <li class="{{ Request::routeIs('agent.subagent.add') ? 'active' : '' }}">
+                            <a href="{{ route('agent.subagent.add') }}" title="Add New Agent" data-filter-tags="ui components">
+                                <i class="fal fa-plus"></i>
+                                <span class="nav-link-text" data-i18n="nav.ui_components">Add Agent</span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::routeIs('agent.subagent.manage') ? 'active' : '' }}">
+                            <a href="{{ route('agent.subagent.manage') }}" title="Manage Agents" data-filter-tags="application intel introduction">
+                                <i class="fal fa-table"></i>
+                                <span class="nav-link-text" data-i18n="nav.application_intel_introduction">Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="{{ Request::routeIs('agent.expanse.add') ||  Request::routeIs('agent.expase.manage') ? 'active' : '' }}">
                     <a href="#" title="Branch Customers" data-filter-tags="customers">
                         <i class="fal fa-exclamation-circle"></i>
