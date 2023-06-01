@@ -18,6 +18,7 @@ use App\Http\Controllers\FranchisePaymentController;
 use App\Http\Controllers\FranchisePlotController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\PlotsController;
+use App\Http\Controllers\SubAgentController;
 use App\Http\Controllers\Users\UserController;
 use App\Models\Franchise;
 use App\Models\User;
@@ -157,6 +158,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/agent/expanse/store', [AexpanseController::class,'store'])->name('agent.expanse.store')->middleware('franchise');
     Route::get('/agent/expanse/delete/{id}',[AexpanseController::class,'delete'])->name('agent.expanse.delete')->middleware('franchise');
     Route::post('/agent/expanse/update',[AexpanseController::class,'update'])->name('agent.expanse.update')->middleware('franchise');
+
+
+    // Routes For sub agents start here
+    Route::get('/agent/sub-agent/manage', [SubAgentController::class, 'index'])->name('agent.subagent.manage')->middleware('franchise');
+    Route::get('/agent/sub-agent/add', [SubAgentController::class, 'add'])->name('agent.subagent.add')->middleware('franchise');
+    Route::post('/agent/sub-agent/store', [SubAgentController::class, 'store'])->name('agent.subagent.store')->middleware('franchise');
+    Route::get('/agent/sub-agent/edit/{id}', [SubAgentController::class, 'edit'])->name('agent.subagent.edit')->middleware('franchise');
+    Route::post('/agent/sub-agent/update', [SubAgentController::class, 'update'])->name('agent.subagent.update')->middleware('franchise');
+    Route::get('/agent/sub-agent/delete/{id}', [SubAgentController::class, 'destroy'])->name('agent.subagent.delete')->middleware('franchise');
 
     // Routes for agent installments
     Route::get('/agent/add/installment', [AinstallmentController::class, 'create'])->name('agent.installment.payment')->middleware('franchise');
