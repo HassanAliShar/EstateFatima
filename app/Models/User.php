@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function franchise(){
         return $this->hasOne(Franchise::class,'user_id');
     }
+
+    public function sub_agents(){
+        return $this->hasMany(Sub_agent::class,'created_by');
+    }
 }

@@ -61,4 +61,9 @@ class SubAgentController extends Controller
             return redirect()->back()->with('error','Agent Not Deleted');
         }
     }
+
+    public function sub_agents_commission(){
+        $agents = Sub_agent::with('agbookings.agent_bookings')->get();
+        dd($agents);
+    }
 }

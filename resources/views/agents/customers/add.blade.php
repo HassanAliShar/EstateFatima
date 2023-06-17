@@ -81,6 +81,17 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="UserName">Select Your Agent if it is referances?</label>
+                        <select name="agent" class="form-control" required="">
+                            <option value="" selected="">Select Agent</option>
+                            @foreach ($sub_agents ?? [] as $agent)
+                                <option value="{{ $agent->id }}">{{ $agent->name ?? 'Not given' }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <h5 class="size text-center text-success pt-3"></h5>
                     <input type="hidden" value="{{ auth()->user()->id }}" name="created_by"/>
                     <input type="hidden" class="hidden_size" name="plot_size"/>

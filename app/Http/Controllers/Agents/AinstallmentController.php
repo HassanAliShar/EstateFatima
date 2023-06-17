@@ -61,7 +61,10 @@ class AinstallmentController extends Controller
         $installment->installment_amount = $request->ins_amount;
         $installment->installment_details= $request->ins_details;
 
-        $booking_order = Booking_order::with('user.franchise')->find($request->booking_order_id);
+        $booking_order = Booking_order::with('user.franchise')->with('sub_agent_get')->find($request->booking_order_id);
+        $installment->agent_commsion = ($request->ins_amount * ($booking_order->user->franchise->percent/100));
+        $installment->sub_agent_id = $booking_order->sub_agent_id == null ? null : $booking_order->sub_agent_id;
+        $installment->sub_agent_comission = $booking_order->sub_agent_id == null ? 0 : ($installment->agent_commsion * ($booking_order->sub_agent_get->percentage/100));
         $total = $booking_order->total_amount;
         $booking_order->total_amount = $total - $request->ins_amount;
 
@@ -165,7 +168,7 @@ class AinstallmentController extends Controller
         //  dd($customers);
         foreach($customers as $customer){
             array_push($customer_ids,$customer->id);
-        } 
+        }
 
         $customer = Customer::with('bookings')->with('booking.plot.block')->get();
         if(!is_null($customer)){

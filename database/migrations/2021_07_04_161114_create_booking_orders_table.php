@@ -19,9 +19,11 @@ class CreateBookingOrdersTable extends Migration
             $table->decimal('total_amount', 20, 2);
             $table->foreignId('created_by');
             $table->foreignId('customer_id');
+            $table->foreignId('sub_agent_id')->nullable();
             $table->string('status')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('sub_agent_id')->references('id')->on('sub_agents')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
         });

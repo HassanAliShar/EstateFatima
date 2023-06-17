@@ -12,8 +12,10 @@ use App\Models\Customer;
 use App\Models\Franchise;
 use App\Models\Nominee;
 use App\Models\Plot;
+use App\Models\Sub_agent;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AcustomerController extends Controller
@@ -26,7 +28,8 @@ class AcustomerController extends Controller
     public function add(){
         $blocks = Block::all();
         $block_cat = Block_category::all();
-        return view('agents.customers.add',compact('blocks','block_cat'));
+        $sub_agents = Sub_agent::where('created_by',Auth::user()->id)->get();
+        return view('agents.customers.add',compact('blocks','block_cat','sub_agents'));
     }
 
     function checkUser(){
@@ -117,6 +120,7 @@ class AcustomerController extends Controller
             $order->total_amount = $total_price;
             $order->created_by = $request->created_by;
             $order->customer_id = $customer->id;
+            $order->sub_agent_id = $request->agent;
             $order->status = 0;
             $order->save();
 

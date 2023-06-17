@@ -82,14 +82,22 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="UserName">Select Agent</label>
-                        <select name="created_by" class="form-control" required="">
+                        <select name="created_by" onchange="getSubAgents(this)" class="form-control" required="">
                             <option value="" selected="">Select Agent</option>
                             @foreach ($franchises ?? [] as $franchise)
-                                <option value="{{ $franchise->id }}">{{ $franchise->name }} | {{ $franchise->franchise->name ?? 'Not Given' }}</option>
+                                <option data-sub_agents="{{ json_encode($franchise->sub_agents ?? []) }}" value="{{ $franchise->id }}">{{ $franchise->name }} | {{ $franchise->franchise->name ?? 'Not Given' }}</option>
                             @endforeach
+                        </select>   
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="UserName">Select Sub Agent</label>
+                        <select name="agent" class="form-control sub_agents">
+                            <option value="">Select Sub Agent</option>
                         </select>
                     </div>
                 </div>
@@ -305,6 +313,16 @@
 @endsection
 <script src="{{ asset('webtemp/js/jquery-3.6.0.min.js') }}"></script>
 <script>
+    function getSubAgents(th){
+        var selectedOption = th.options[th.selectedIndex];
+        var data = $(selectedOption).data('sub_agents');
+        var html ='<option value="">--Select Sub Agent--</option>';
+        $(data).each(function(i,v){
+            html +=`<option value="${v.id}">${v.name}</option>`
+        })
+
+        $('.sub_agents').empty().append(html);
+    }
     $(document).ready(function(){
         $('.block_cat').change(function(e){
             // e.prevetDefault();
