@@ -34,6 +34,9 @@ class Customer extends Model
     {
         return $this->hasOne(Booking_order::class,'customer_id');
     }
+    // public function sub_agent(){
+    //     return $this->belongsToMany(Sub_agent::class,Booking::class);
+    // }
     public function installments()
     {
         return $this->hasMany(Booking_installment::class);

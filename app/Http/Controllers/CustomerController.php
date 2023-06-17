@@ -26,7 +26,8 @@ class CustomerController extends Controller
     public function add(){
         $blocks = Block::all();
         $block_cat = Block_category::all();
-        $franchises = User::with('franchise')->where('role_id',2)->where('status',0)->get();
+        $franchises = User::with('franchise')->with('sub_agents')->where('role_id',2)->where('status',0)->get();
+        // dd($franchises);
         return view('customers.add',compact('blocks','block_cat','franchises'));
     }
 
@@ -108,6 +109,7 @@ class CustomerController extends Controller
             $order->total_amount = $total_price;
             $order->created_by = !is_null($request->created_by) ? $request->created_by : auth()->user()->id;
             $order->customer_id = $customer->id;
+            $order->sub_agent_id = $request->agent;
             $order->status = 0;
             $order->save();
             // $booking_order = Booking_order::orderby('id','desc')->first();
@@ -121,11 +123,16 @@ class CustomerController extends Controller
             $booking->pre_choice = $request->preferred_choices;
             $booking->save();
             // $last_booking = Booking::orderby('id','desc')->first();
+            $getorderData = Booking_order::with('user.franchise')->with('sub_agent_get')->find($order->id);
+            // dd($getorderData);
             $installment = new Booking_installment();
             $installment->booking_order_id = $order->id;
             $installment->booking_id = $booking->id;
             $installment->customer_id = $customer->id;
             $installment->installment_amount = $request->installment;
+            $installment->agent_commsion = (($request->installment+$request->d_payment) * ($getorderData->user->franchise->percent/100));
+            $installment->sub_agent_id = $getorderData->sub_agent_id == null ? null : $getorderData->sub_agent_id;
+            $installment->sub_agent_comission = $getorderData->sub_agent_id == null ? 0 : (($installment->agent_commsion) * (!is_null($getorderData->sub_agent_get) ? $getorderData->sub_agent_get->percentage : 0)/100);
             if($installment->save()){
                 $franchise = Franchise::where('user_id',auth()->user()->id)->first();
                 if($franchise != null){

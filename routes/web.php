@@ -167,6 +167,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/agent/sub-agent/edit/{id}', [SubAgentController::class, 'edit'])->name('agent.subagent.edit')->middleware('franchise');
     Route::post('/agent/sub-agent/update', [SubAgentController::class, 'update'])->name('agent.subagent.update')->middleware('franchise');
     Route::get('/agent/sub-agent/delete/{id}', [SubAgentController::class, 'destroy'])->name('agent.subagent.delete')->middleware('franchise');
+    Route::get('/agent/sub-agent/commission', [SubAgentController::class, 'sub_agents_commission'])->name('agent.subagent.commission');
 
     // Routes for agent installments
     Route::get('/agent/add/installment', [AinstallmentController::class, 'create'])->name('agent.installment.payment')->middleware('franchise');

@@ -564,7 +564,7 @@ class ComposerStaticInitc8c5084a04276b1ddbd9e3a4c3c63c00
         'App\\Models\\Nominee' => __DIR__ . '/../..' . '/app/Models/Nominee.php',
         'App\\Models\\Plot' => __DIR__ . '/../..' . '/app/Models/Plot.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
-        'App\\Models\\Sub_Agent' => __DIR__ . '/../..' . '/app/Models/Sub_Agent.php',
+        'App\\Models\\Sub_agent' => __DIR__ . '/../..' . '/app/Models/Sub_agent.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

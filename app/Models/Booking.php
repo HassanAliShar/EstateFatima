@@ -17,4 +17,8 @@ class Booking extends Model
     {
         return $this->hasMany(Booking_installment::class);
     }
+
+    public function booking_order(){
+        return $this->belongsTo(Booking_order::class,'booking_orders_id');
+    }
 }
