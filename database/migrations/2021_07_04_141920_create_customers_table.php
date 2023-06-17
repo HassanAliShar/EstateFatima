@@ -30,9 +30,11 @@ class CreateCustomersTable extends Migration
             $table->string('relation')->nullable();
             $table->string('status')->nullable();
             $table->foreignId('created_by');
-
+            $table->date('last_payment')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

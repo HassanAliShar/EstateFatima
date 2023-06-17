@@ -42,11 +42,11 @@ class InstallmentController extends Controller
     public function viwe_all_invoices($id){
         $invoice = Customer::with('booking.plot.block')->with('installments')->with('booking_orders')->find($id);
         $date =  Carbon::now()->format('d/m/yy');
-        
-        
-        
+
+
+
         // dd($invoice->bookings->down_payment);
-        
+
         // dd($installment);
         if(!is_null($invoice)){
             $count_installment = $invoice->installments->count();
@@ -67,13 +67,16 @@ class InstallmentController extends Controller
         $installment->installment_amount = $request->ins_amount;
         $installment->installment_details = $request->ins_details;
 
-        $booking_order = Booking_order::with('user.franchise')->find($request->booking_order_id);
+        $booking_order = Booking_order::with('user.franchise')->with('sub_agent_get')->find($request->booking_order_id);
+        $installment->agent_commsion = $booking_order->user->franchise == null ? 0 : ($request->ins_amount * ($booking_order->user->franchise->percent/100));
+        $installment->sub_agent_id = $booking_order->sub_agent_id == null ? null : $booking_order->sub_agent_id;
+        $installment->sub_agent_comission = $booking_order->sub_agent_id == null ? 0 : ($installment->agent_commsion * ($booking_order->sub_agent_get->percentage/100));
         // $franchise = Franchise::where('user_id',$booking_order->user->id)->first();
         // dd($booking_order);
         $total = $booking_order->total_amount;
         $booking_order->total_amount = $total - $request->ins_amount;
         $booking_order->save();
-        
+
         if($installment->save()){
             $franchise = Franchise::where('user_id',$booking_order->user->id)->first();
             // dd($franchise);
@@ -173,7 +176,7 @@ class InstallmentController extends Controller
         //  dd($customers);
         foreach($customers as $customer){
             array_push($customer_ids,$customer->id);
-        } 
+        }
 
         $customer = Customer::with('bookings')->with('booking.plot.block')->get();
         if(!is_null($customer)){

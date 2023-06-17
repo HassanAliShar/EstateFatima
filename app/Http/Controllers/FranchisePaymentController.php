@@ -6,6 +6,8 @@ use App\Models\Booking_installment;
 use App\Models\Customer;
 use App\Models\Franchise;
 use App\Models\FranchisePayment;
+use App\Models\Sub_agent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FranchisePaymentController extends Controller
@@ -48,20 +50,29 @@ class FranchisePaymentController extends Controller
         ->orderBy('created_at', 'desc')
         ->where('franchise_id',$franchise_id)
         ->first();
-
-        $startDate = $lastPaymentBeforeGivenDate->created_at ?? Franchise::find($franchise_id)->created_at;
-        $endDate = $date;
-        $customers = Customer::with(['booking' => function ($query) use ($startDate, $endDate) {
-            $query->whereDate('created_at', '>=',$startDate)->whereDate('created_at','<=',$endDate);
-        }])
+        $franchise = Franchise::find($franchise_id);
+        $startDate = $lastPaymentBeforeGivenDate->created_at ?? $franchise->created_at;
+        $endDate = Carbon::parse($date);
+        $customers = Customer::with('booking.booking_order.sub_agent_get')
+        ->with('booking',function ($query) use ($startDate, $endDate) {
+            $query->where('created_at', '>=',$startDate)->where('created_at','<=',$endDate);
+        })
         ->with(['installments' => function ($querys) use ($startDate, $endDate) {
-            $querys->whereDate('created_at', '>=',$startDate)->whereDate('created_at','<=',$endDate);
+            $querys->where('created_at', '>=',$startDate)->where('created_at','<=',$endDate);
         }])
         ->where('created_by',$id)->get();
 
-        // dd($customers);
+        $sub_agents = Sub_agent::with(['installments' => function ($querys) use ($startDate, $endDate) {
+            $querys->where('created_at', '>=',$startDate)->where('created_at','<=',$endDate);
+        }])->get();
 
-        return view('franchise.payments.history',compact('customers'));
+        $lastPayment = FranchisePayment::where('created_at', '=', $date)
+        ->where('franchise_id',$franchise_id)
+        ->first();
+
+        // dd($lastPayment);
+
+        return view('franchise.payments.history',compact('customers','sub_agents','lastPayment'));
 
     }
 }

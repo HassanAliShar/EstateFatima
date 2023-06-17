@@ -55,6 +55,71 @@
                     </div>
                 </div>
             </div>
+
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @php
+                        $total_agents = 0;
+                    @endphp
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Agent No</th>
+                                        <th>Agent Name</th>
+                                        <th>Agnet Percentage</th>
+                                        <th>Agent Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (isset($sub_agents))
+                                        @foreach ($sub_agents as $row)
+                                        <tr>
+                                            <td>{{ $row->id }}</td>
+                                            <td>{{ $row->name ?? "Not Given" }}</td>
+                                            <td>{{ $row->percentage ?? 0 }}%</td>
+                                            <td>
+                                                @php
+                                                    $totals=0;
+                                                @endphp
+                                                @foreach ($row->installments as $inst)
+                                                    @php
+                                                        $totals +=$inst->sub_agent_comission;
+                                                        $total_agents +=$inst->sub_agent_comission
+                                                    @endphp
+                                                @endforeach
+                                                {{ $totals }}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Agent No</th>
+                                        <th>Agent Name</th>
+                                        <th>Agnet Percentage</th>
+                                        <th>Agent Amount</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <h2>Franchise Total Commission Rs {{ $lastPayment->commission ?? 0 }} </h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Franchise Sub Agents Commission Rs {{ $total_agents }} </h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Franchise Current Commission Rs {{ $lastPayment->commission - $total_agents }} </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
