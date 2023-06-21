@@ -186,7 +186,6 @@ class CustomerController extends Controller
             // Upload Orginal Image
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage);
-
             $insert['image'] = "$profileImage";
             // Save In Database
             $update_cus->images="$profileImage";
@@ -194,7 +193,7 @@ class CustomerController extends Controller
         $update_cus->name = $request->name;
         $update_cus->email = $request->email;
         $update_cus->mobile_no = $request->mobile_no;
-        $update_cus->phone = $request->phone;
+        $update_cus->cnic_no = $request->cnic_no;
         $update_cus->perment_address = $request->address;
         $update_cus->postal_address = $request->p_address;
         $update_cus->passport = $request->passport;
