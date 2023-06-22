@@ -83,7 +83,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="UserName">Select Your Agent if it is referances?</label>
-                        <select name="agent" class="form-control" required="">
+                        <select name="agent" class="form-control">
                             <option value="" selected="">Select Agent</option>
                             @foreach ($sub_agents ?? [] as $agent)
                                 <option value="{{ $agent->id }}">{{ $agent->name ?? 'Not given' }}</option>
