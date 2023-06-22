@@ -213,6 +213,10 @@ Route::group(['middleware' => 'auth'], function () {
         return "Cache is cleared";
     });
 });
+Route::get('/db-run-backup', function () {
+    Artisan::call('backup:run');
+    // Additional code if needed
+});
 Route::get('/user/info',[CustomersDataController::class,'index'])->name('user.info');
 Route::post('/search/user/info',[CustomersDataController::class,'search_user_info'])->name('search.user.info');
 Route::get('user/file/info/{id}',[CustomersDataController::class,'get_user_file'])->name('get.user.file');
