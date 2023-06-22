@@ -143,7 +143,7 @@ class CustomerController extends Controller
                 $plot_status->status = 1;
                 $plot_status->save();
                 DB::commit();
-                return redirect('customer/add')->with('success','Added Successfully');
+                return redirect()->back()->with('success','Added Successfully');
             }
             else{
                 DB::rollBack();
@@ -207,7 +207,6 @@ class CustomerController extends Controller
         else{
             return redirect()->back()->with('error','Customer Not Updated');
         }
-
     }
 
     public function nominee_details_show($id){

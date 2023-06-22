@@ -49,13 +49,13 @@
                                         <input type="hidden" name="customer_id" value="{{ $customer_info->customer_id }}" >
                                         <div class="form-group">
                                             <label for="UserName">Name</label>
-                                            <input id="UserName" readonly value="{{ $customer_info->name }}" class="form-control" placeholder="Enter Name" type="text" name="name" >
+                                            <input id="UserName" value="{{ $customer_info->name }}" class="form-control" placeholder="Enter Name" type="text" name="name" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label for="UserEmail">Email</label>
-                                            <input id="UserEmail" readonly value="{{ $customer_info->email }}" class="form-control" placeholder="Enter Email" type="text" name="email" >
+                                            <input id="UserEmail" value="{{ $customer_info->email }}" class="form-control" placeholder="Enter Email" type="text" name="email" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -67,7 +67,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label for="UserCnic">CNIC Number</label>
-                                            <input id="UserCnic" readonly value="{{ $customer_info->cnic_no }}" class="form-control" type="text" name="cnic_no" >
+                                            <input id="UserCnic" value="{{ $customer_info->cnic_no }}" class="form-control" type="text" name="cnic_no" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
