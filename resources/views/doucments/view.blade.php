@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="d-flex align-items-center mb-5">
                     <h2 class="keep-print-font fw-500 mb-0 text-primary flex-1 position-relative">
-                        FatimaKashmiri City
+                        New Fatima City Super Highway Karachi
                         <!-- barcode demo only -->
                         <img id="barcode" alt="" class="position-absolute pos-top pos-right height-3 mt-1 hidden-md-down" src="data:image/png;base64,">
                     </h2>
