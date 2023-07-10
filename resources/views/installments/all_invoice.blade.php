@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="d-flex align-items-center mb-5">
                     <h2 class="keep-print-font fw-500 mb-0 text-primary flex-1 position-relative">
-                        FatimaKashmiri City
+                        New Fatima City Super Highway Karachi
                         <small class="text-muted mb-0 fs-xs">
                             227 Cobblestone Road 30000 Bedrock, Cobblestone County
                         </small>
@@ -212,7 +212,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h4 class="py-5 text-primary">
-                    CEO BABAR, thank you very much. We really appreciate your Hopes.
+                    CEO Zubair, thank you very much. We really appreciate your Hopes.
                     <br>
                     Please check your all Installments.
                 </h4>
