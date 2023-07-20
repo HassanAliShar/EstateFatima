@@ -45,6 +45,8 @@ class BlockController extends Controller
     public function update(Request $request){
         $block = Block::find($request->id);
         $block->name = $request->name;
+        $block->start = $request->start;
+        $block->end = $request->end;
         if($block->save()){
             return redirect('/blocks')->with('success','Block Updated Successfully');
         }

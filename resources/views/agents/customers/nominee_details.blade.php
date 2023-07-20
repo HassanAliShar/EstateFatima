@@ -67,7 +67,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label for="UserCnic">CNIC Number</label>
-                                            <input id="UserCnic" value="{{ $customer_info->cnic_no }}" class="form-control" type="text" name="cnic_no" >
+                                            <input id="UserCnic" data-inputmask="'mask': '99999-9999999-9'" value="{{ $customer_info->cnic_no }}" class="form-control" type="text" name="cnic_no" >
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
