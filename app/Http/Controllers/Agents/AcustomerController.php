@@ -227,6 +227,7 @@ class AcustomerController extends Controller
         $update_cus->email = $request->email;
         $update_cus->mobile_no = $request->mobile_no;
         $update_cus->phone = $request->phone;
+        $update_cus->cnic_no = $request->cnic_no;
         $update_cus->perment_address = $request->address;
         $update_cus->postal_address = $request->p_address;
         $update_cus->passport = $request->passport;
